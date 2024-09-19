@@ -1,3 +1,5 @@
+tap "isen-ng/dotnet-sdk-versions"
+
 brew "bat"
 brew "docker"
 brew "fzf"

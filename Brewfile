@@ -2,6 +2,7 @@ tap "isen-ng/dotnet-sdk-versions"
 
 brew "bat"
 brew "docker"
+brew "eza"
 brew "fzf"
 brew "mysql@5.7"
 brew "neovim"

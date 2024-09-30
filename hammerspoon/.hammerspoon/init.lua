@@ -9,7 +9,6 @@ mehShortcuts = {
 	{ "M", "Mail" },
 	{ "N", "Notes" },
 	{ "P", "1Password" },
-	{ "R", "Rider" },
 	{ "S", "Slack" },
 	{ "T", "Alacritty" },
 	{ "J", "Cypress" },

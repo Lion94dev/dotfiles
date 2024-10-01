@@ -10,7 +10,7 @@ mehShortcuts = {
 	{ "N", "Notes" },
 	{ "P", "1Password" },
 	{ "S", "Slack" },
-	{ "T", "Alacritty" },
+	{ "T", "Kitty" },
 	{ "J", "Cypress" },
 	{ "W", "WhatsApp" },
 }

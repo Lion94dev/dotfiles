@@ -15,6 +15,11 @@ export BAT_THEME=tokyonight_storm
 
 
 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
 alias cat="bat"
 alias ls="eza --icons=always"
 alias y="yazi"

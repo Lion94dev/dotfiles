@@ -26,31 +26,83 @@ end
 hs.window.animationDuration = 0
 hs.loadSpoon("WindowHalfsAndThirds")
 
-function moveWindowToDisplay(display, half)
+local Position = {
+	LeftThird = {},
+	MiddleThirdH = {},
+	RightThird = {},
+	TopThird = {},
+	MiddleThirdV = {},
+	BottomThird = {},
+	Maximize = {},
+	LeftTwoThird = {},
+	RightTwoThird = {},
+	BottomTwoThird = {},
+	TopTwoThird = {},
+	LeftHalf = {},
+	RightHalf = {},
+}
+
+function MoveWindowToDisplay(display, position)
 	return function()
 		local displays = hs.screen.allScreens()
 		local win = hs.window.focusedWindow()
 		win:moveToScreen(displays[display], false, true)
-		if half == 0 then
+		if position == Position.LeftThird then
+			spoon.WindowHalfsAndThirds:leftThird(win)
+		end
+		if position == Position.MiddleThirdH then
+			spoon.WindowHalfsAndThirds:middleThirdH(win)
+		end
+		if position == Position.RightThird then
+			spoon.WindowHalfsAndThirds:rightThird(win)
+		end
+		if position == Position.TopThird then
+			spoon.WindowHalfsAndThirds:topThird(win)
+		end
+		if position == Position.MiddleThirdV then
+			spoon.WindowHalfsAndThirds:middleThirdV(win)
+		end
+		if position == Position.BottomThird then
+			spoon.WindowHalfsAndThirds:bottomThird(win)
+		end
+		if position == Position.Maximize then
+			spoon.WindowHalfsAndThirds:maximize(win)
+		end
+		if position == Position.LeftTwoThird then
+			spoon.WindowHalfsAndThirds:leftTwoThird(win)
+		end
+		if position == Position.RightTwoThird then
+			spoon.WindowHalfsAndThirds:rightTwoThird(win)
+		end
+		if position == Position.TopTwoThird then
+			spoon.WindowHalfsAndThirds:topTwoThird(win)
+		end
+		if position == Position.BottomTwoThird then
+			spoon.WindowHalfsAndThirds:bottomTwoThird(win)
+		end
+		if position == Position.LeftHalf then
 			spoon.WindowHalfsAndThirds:leftHalf(win)
 		end
-		if half == 1 then
-			win:maximize()
-		end
-		if half == 2 then
+		if position == Position.RightHalf then
 			spoon.WindowHalfsAndThirds:rightHalf(win)
 		end
 	end
 end
 
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "1", moveWindowToDisplay(3, 0))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "2", moveWindowToDisplay(3, 1))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "3", moveWindowToDisplay(3, 2))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "`", MoveWindowToDisplay(3, Position.TopThird))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "=", MoveWindowToDisplay(3, Position.MiddleThirdV))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "1", MoveWindowToDisplay(3, Position.BottomThird))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "2", MoveWindowToDisplay(3, Position.TopTwoThird))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "3", MoveWindowToDisplay(3, Position.BottomTwoThird))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "4", MoveWindowToDisplay(3, Position.Maximize))
 
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "4", moveWindowToDisplay(2, 0))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "5", moveWindowToDisplay(2, 1))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "6", moveWindowToDisplay(2, 2))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "5", MoveWindowToDisplay(2, Position.LeftThird))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "6", MoveWindowToDisplay(2, Position.MiddleThirdH))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "7", MoveWindowToDisplay(2, Position.RightThird))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "8", MoveWindowToDisplay(2, Position.LeftTwoThird))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "9", MoveWindowToDisplay(2, Position.RightTwoThird))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "0", MoveWindowToDisplay(2, Position.LeftHalf))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "\\", MoveWindowToDisplay(2, Position.RightHalf))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "-", MoveWindowToDisplay(2, Position.Maximize))
 
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "7", moveWindowToDisplay(1, 0))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "8", moveWindowToDisplay(1, 1))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "9", moveWindowToDisplay(1, 2))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "'", MoveWindowToDisplay(1, Position.Maximize))

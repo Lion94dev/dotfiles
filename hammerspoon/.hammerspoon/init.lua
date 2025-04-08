@@ -40,6 +40,12 @@ local Position = {
 	TopTwoThird = {},
 	LeftHalf = {},
 	RightHalf = {},
+	TopHalf = {},
+	BottomHalf = {},
+	TopLeft = {},
+	BottomLeft = {},
+	TopRight = {},
+	BottomRight = {},
 }
 
 function MoveWindowToDisplay(display, position)
@@ -86,23 +92,74 @@ function MoveWindowToDisplay(display, position)
 		if position == Position.RightHalf then
 			spoon.WindowHalfsAndThirds:rightHalf(win)
 		end
+		if position == Position.TopHalf then
+			spoon.WindowHalfsAndThirds:topHalf(win)
+		end
+		if position == Position.BottomHalf then
+			spoon.WindowHalfsAndThirds:bottomHalf(win)
+		end
+		if position == Position.TopLeft then
+			spoon.WindowHalfsAndThirds:topLeft(win)
+		end
+		if position == Position.BottomLeft then
+			spoon.WindowHalfsAndThirds:bottomLeft(win)
+		end
+		if position == Position.TopRight then
+			spoon.WindowHalfsAndThirds:topRight(win)
+		end
+		if position == Position.BottomRight then
+			spoon.WindowHalfsAndThirds:bottomRight(win)
+		end
 	end
 end
 
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "`", MoveWindowToDisplay(3, Position.TopThird))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "=", MoveWindowToDisplay(3, Position.MiddleThirdV))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "1", MoveWindowToDisplay(3, Position.BottomThird))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "2", MoveWindowToDisplay(3, Position.TopTwoThird))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "3", MoveWindowToDisplay(3, Position.BottomTwoThird))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "4", MoveWindowToDisplay(3, Position.Maximize))
+hs.loadSpoon("RecursiveBinder")
 
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "5", MoveWindowToDisplay(2, Position.LeftThird))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "6", MoveWindowToDisplay(2, Position.MiddleThirdH))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "7", MoveWindowToDisplay(2, Position.RightThird))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "8", MoveWindowToDisplay(2, Position.LeftTwoThird))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "9", MoveWindowToDisplay(2, Position.RightTwoThird))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "0", MoveWindowToDisplay(2, Position.LeftHalf))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "\\", MoveWindowToDisplay(2, Position.RightHalf))
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "-", MoveWindowToDisplay(2, Position.Maximize))
+spoon.RecursiveBinder.escapeKey = { {}, "escape" } -- Press escape to abort
 
-hs.hotkey.bind({ "ctrl", "shift", "option" }, "'", MoveWindowToDisplay(1, Position.Maximize))
+local singleKey = spoon.RecursiveBinder.singleKey
+
+local monitor1 = {
+	[singleKey("1", "1/3 top")] = MoveWindowToDisplay(3, Position.TopThird),
+	[singleKey("2", "1/3 middle")] = MoveWindowToDisplay(3, Position.MiddleThirdV),
+	[singleKey("3", "1/3 bottom")] = MoveWindowToDisplay(3, Position.BottomThird),
+	[singleKey("4", "1/2 top")] = MoveWindowToDisplay(3, Position.TopHalf),
+	[singleKey("5", "1/2 bottom")] = MoveWindowToDisplay(3, Position.BottomHalf),
+	[singleKey("6", "2/3 top")] = MoveWindowToDisplay(3, Position.TopTwoThird),
+	[singleKey("7", "2/3 bottom")] = MoveWindowToDisplay(3, Position.BottomTwoThird),
+	[singleKey("8", "full")] = MoveWindowToDisplay(3, Position.Maximize),
+}
+
+local monitor2 = {
+	[singleKey("1", "1/3 left")] = MoveWindowToDisplay(2, Position.LeftThird),
+	[singleKey("2", "1/3 middle")] = MoveWindowToDisplay(2, Position.MiddleThirdH),
+	[singleKey("3", "1/3 right")] = MoveWindowToDisplay(2, Position.RightThird),
+	[singleKey("4", "1/2 left")] = MoveWindowToDisplay(2, Position.LeftHalf),
+	[singleKey("5", "1/2 right")] = MoveWindowToDisplay(2, Position.RightHalf),
+	[singleKey("6", "2/3 left")] = MoveWindowToDisplay(2, Position.LeftTwoThird),
+	[singleKey("7", "2/3 right")] = MoveWindowToDisplay(2, Position.RightTwoThird),
+	[singleKey("8", "full")] = MoveWindowToDisplay(2, Position.Maximize),
+	[singleKey("=", "top left")] = MoveWindowToDisplay(2, Position.TopLeft),
+	[singleKey("`", "bottom left")] = MoveWindowToDisplay(2, Position.BottomLeft),
+	[singleKey("\\", "top right")] = MoveWindowToDisplay(2, Position.TopRight),
+	[singleKey("-", "bottom right")] = MoveWindowToDisplay(2, Position.BottomRight),
+}
+
+local monitor3 = {
+	[singleKey("1", "1/3 left")] = MoveWindowToDisplay(1, Position.LeftThird),
+	[singleKey("2", "1/3 middle")] = MoveWindowToDisplay(1, Position.MiddleThirdH),
+	[singleKey("3", "1/3 right")] = MoveWindowToDisplay(1, Position.RightThird),
+	[singleKey("4", "1/2 left")] = MoveWindowToDisplay(1, Position.LeftHalf),
+	[singleKey("5", "1/2 right")] = MoveWindowToDisplay(1, Position.RightHalf),
+	[singleKey("6", "2/3 left")] = MoveWindowToDisplay(1, Position.LeftTwoThird),
+	[singleKey("7", "2/3 right")] = MoveWindowToDisplay(1, Position.RightTwoThird),
+	[singleKey("8", "full")] = MoveWindowToDisplay(1, Position.Maximize),
+	[singleKey("=", "top left")] = MoveWindowToDisplay(1, Position.TopLeft),
+	[singleKey("`", "bottom left")] = MoveWindowToDisplay(1, Position.BottomLeft),
+	[singleKey("\\", "top right")] = MoveWindowToDisplay(1, Position.TopRight),
+	[singleKey("-", "bottom right")] = MoveWindowToDisplay(1, Position.BottomRight),
+}
+
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "1", spoon.RecursiveBinder.recursiveBind(monitor1))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "2", spoon.RecursiveBinder.recursiveBind(monitor2))
+hs.hotkey.bind({ "ctrl", "shift", "option" }, "3", spoon.RecursiveBinder.recursiveBind(monitor3))

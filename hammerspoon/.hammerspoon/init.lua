@@ -12,7 +12,6 @@ mehShortcuts = {
 	{ "R", "Rider" },
 	{ "S", "Slack" },
 	{ "T", "Ghostty" },
-	{ "J", "Cypress" },
 	{ "W", "WhatsApp" },
 }
 

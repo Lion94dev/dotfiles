@@ -1,26 +1,3 @@
--- Application switcher
-mehShortcuts = {
-	{ "A", "Arc" },
-	{ "B", "Bitwarden" },
-	{ "C", "Calendar" },
-	{ "D", "TablePlus" },
-	{ "E", "Microsoft Teams" },
-	{ "I", "IINA" },
-	{ "M", "Mail" },
-	{ "N", "Notes" },
-	{ "P", "1Password" },
-	{ "R", "Rider" },
-	{ "S", "Slack" },
-	{ "T", "Ghostty" },
-	{ "W", "WhatsApp" },
-}
-
-for i, shortcut in ipairs(mehShortcuts) do
-	hs.hotkey.bind({ "ctrl", "shift", "option" }, shortcut[1], function()
-		hs.application.launchOrFocus(shortcut[2])
-	end)
-end
-
 -- Window mover
 hs.window.animationDuration = 0
 hs.loadSpoon("WindowHalfsAndThirds")

@@ -13,11 +13,5 @@ return {
       end
       return true
     end,
-
-    execution_message = {
-      message = function() -- message to print on save
-        return ""
-      end,
-    },
   },
 }

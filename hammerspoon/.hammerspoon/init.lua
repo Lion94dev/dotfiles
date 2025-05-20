@@ -19,9 +19,13 @@ local Position = {
 	TopHalf = {},
 	BottomHalf = {},
 	TopLeft = {},
+	TopLeftThird = {},
 	BottomLeft = {},
+	BottomLeftThird = {},
 	TopRight = {},
+	TopRightThird = {},
 	BottomRight = {},
+	BottomRightThird = {},
 }
 
 function MoveWindowToDisplay(display, position)
@@ -77,14 +81,26 @@ function MoveWindowToDisplay(display, position)
 		if position == Position.TopLeft then
 			spoon.WindowHalfsAndThirds:topLeft(win)
 		end
+		if position == Position.TopLeftThird then
+			spoon.WindowHalfsAndThirds:topLeftThird(win)
+		end
 		if position == Position.BottomLeft then
 			spoon.WindowHalfsAndThirds:bottomLeft(win)
+		end
+		if position == Position.BottomLeftThird then
+			spoon.WindowHalfsAndThirds:bottomLeftThird(win)
 		end
 		if position == Position.TopRight then
 			spoon.WindowHalfsAndThirds:topRight(win)
 		end
+		if position == Position.TopRightThird then
+			spoon.WindowHalfsAndThirds:topRightThird(win)
+		end
 		if position == Position.BottomRight then
 			spoon.WindowHalfsAndThirds:bottomRight(win)
+		end
+		if position == Position.BottomRightThird then
+			spoon.WindowHalfsAndThirds:bottomRightThird(win)
 		end
 	end
 end
@@ -116,9 +132,13 @@ local monitor2 = {
 	[singleKey("7", "2/3 right")] = MoveWindowToDisplay(2, Position.RightTwoThird),
 	[singleKey("8", "full")] = MoveWindowToDisplay(2, Position.Maximize),
 	[singleKey("=", "top left")] = MoveWindowToDisplay(2, Position.TopLeft),
+	[singleKey("q", "top left third")] = MoveWindowToDisplay(2, Position.TopLeftThird),
 	[singleKey("`", "bottom left")] = MoveWindowToDisplay(2, Position.BottomLeft),
+	[singleKey("a", "bottom left third")] = MoveWindowToDisplay(2, Position.BottomLeftThird),
 	[singleKey("\\", "top right")] = MoveWindowToDisplay(2, Position.TopRight),
+	[singleKey("p", "top right third")] = MoveWindowToDisplay(2, Position.TopRightThird),
 	[singleKey("-", "bottom right")] = MoveWindowToDisplay(2, Position.BottomRight),
+	[singleKey(";", "bottom right third")] = MoveWindowToDisplay(2, Position.BottomRightThird),
 }
 
 local monitor3 = {
@@ -131,9 +151,13 @@ local monitor3 = {
 	[singleKey("7", "2/3 right")] = MoveWindowToDisplay(1, Position.RightTwoThird),
 	[singleKey("8", "full")] = MoveWindowToDisplay(1, Position.Maximize),
 	[singleKey("=", "top left")] = MoveWindowToDisplay(1, Position.TopLeft),
+	[singleKey("q", "top left third")] = MoveWindowToDisplay(1, Position.TopLeftThird),
 	[singleKey("`", "bottom left")] = MoveWindowToDisplay(1, Position.BottomLeft),
+	[singleKey("a", "bottom left third")] = MoveWindowToDisplay(1, Position.BottomLeftThird),
 	[singleKey("\\", "top right")] = MoveWindowToDisplay(1, Position.TopRight),
+	[singleKey("p", "top right third")] = MoveWindowToDisplay(1, Position.TopRightThird),
 	[singleKey("-", "bottom right")] = MoveWindowToDisplay(1, Position.BottomRight),
+	[singleKey(";", "bottom right third")] = MoveWindowToDisplay(1, Position.BottomRightThird),
 }
 
 hs.hotkey.bind({ "ctrl", "shift", "option" }, "1", spoon.RecursiveBinder.recursiveBind(monitor1))

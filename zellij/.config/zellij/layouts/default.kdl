@@ -1,0 +1,41 @@
+layout cwd="~/Projects" {
+    tab name="1 - Frontend" {
+        pane split_direction="Vertical" {
+            pane name="IDE" size="50%"
+            pane name="Utility" size="50%"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="2 - Api" {
+        pane split_direction="Vertical" {
+            pane name="IDE" size="50%"
+            pane name="Utility" size="50%"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="3 - Runners" {
+        pane split_direction="Vertical" {
+            pane name="Frontend" size="50%"
+            pane name="Api" size="50%"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+    tab name="4 - Utility" { 
+          pane
+          pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+          } 
+    }
+    tab name="5 - Tests" {
+        pane name="IDE"
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+    }
+}

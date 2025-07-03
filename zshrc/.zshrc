@@ -30,6 +30,7 @@ alias ff="find . -type f | fzf --preview 'bat --style=numbers --color=always --l
 
 alias zr="zellij run --"
 alias za="zellij a"
+alias z="zellij"
 
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
